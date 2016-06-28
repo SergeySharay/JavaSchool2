@@ -7,126 +7,96 @@
 package javaschool.dao;
 
 import com.google.common.base.Strings;
-import javaschool.em.EntityManagerAc;
 import javaschool.entities.Product;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
+@Repository("ProductDao")
 public class ProductDaoImpl extends GenericDaoImpl<Product, Long> implements ProductDao {
-    /**
-     * Class constructor.
-     */
 
     public ProductDaoImpl() {
-        super(Product.class);
+        super(javaschool.entities.Product.class);
     }
 
-    /**
-     * Get a list of all Products from DB.
-     *
-     * @return List of Products.
-     */
+    @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
     public List<Product> getProducts() {
-        try (EntityManagerAc entityManager = getEntityManager()) {
-            entityManager.getTransaction().begin();
+        try {
             TypedQuery<Product> namedQuery = entityManager.createNamedQuery("Product.getProducts", Product.class);
-            entityManager.getTransaction().commit();
             return namedQuery.getResultList();
+        } catch (Exception e) {
+            System.out.println("ProductDaoImpl.getProducts error:" + e.getMessage());
+            return null;
         }
     }
 
-    /**
-     * Get all products for Brand,Collection from DB.
-     *
-     * @param brand      Brand for searching collections.
-     * @param collection Collection for searching products.
-     * @return List of Products.
-     */
-    public List<Product> getProducts(final String brand, final String collection) {
-        try (EntityManagerAc entityManager = getEntityManager()) {
-            entityManager.getTransaction().begin();
+    @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
+    public List<Product> getCollectionProducts(final String brand, final String collection) {
+        try {
             TypedQuery<Product> namedQuery = entityManager.createNamedQuery("Product.getProductsInCollection", Product.class);
             namedQuery.setParameter("collection", collection);
             namedQuery.setParameter("brand", brand);
-            entityManager.getTransaction().commit();
             return namedQuery.getResultList();
+        } catch (Exception e) {
+            System.out.println("ProductDaoImpl.getProducts error:" + e.getMessage());
+            return null;
         }
     }
 
-    /**
-     * Get a set of all Brands from DB.
-     *
-     * @return Set of Strings.
-     */
+    @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
     public Set<String> getBrands() {
-        try (EntityManagerAc entityManager = getEntityManager()) {
-            entityManager.getTransaction().begin();
+        try {
             TypedQuery<String> namedQuery = entityManager.createNamedQuery("Product.getBrands", String.class);
-            entityManager.getTransaction().commit();
             return new HashSet<String>(namedQuery.getResultList());
+        } catch (Exception e) {
+            System.out.println("ProductDaoImpl.getBrands error:" + e.getMessage());
+            return null;
         }
     }
 
-    /**
-     * Get a brand by collection from DB.
-     *
-     * @param collection A collection in a brand.
-     * @return Single string with brand.
-     */
+    @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
     public String getBrand(String collection) {
-        try (EntityManagerAc entityManager = getEntityManager()) {
-            entityManager.getTransaction().begin();
+        try {
             TypedQuery<String> namedQuery = entityManager.createNamedQuery("Product.getBrand", String.class);
             namedQuery.setParameter("collection", collection);
-            entityManager.getTransaction().commit();
             return namedQuery.getSingleResult();
+        } catch (Exception e) {
+            System.out.println("ProductDaoImpl.getBrand error:" + e.getMessage());
+            return null;
         }
     }
 
-    /**
-     * Get all collections from DB.
-     *
-     * @return HashSet of Strings with collections.
-     */
+    @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
     public Set<String> getCollections() {
-        try (EntityManagerAc entityManager = getEntityManager()) {
-            entityManager.getTransaction().begin();
+        try {
             TypedQuery<String> namedQuery = entityManager.createNamedQuery("Product.getAllCollections", String.class);
-            entityManager.getTransaction().commit();
             return new HashSet<String>(namedQuery.getResultList());
+        } catch (Exception e) {
+            System.out.println("ProductDaoImpl.getCollections error:" + e.getMessage());
+            return null;
         }
     }
 
-    /**
-     * Get collections for current brand from DB.
-     *
-     * @param brand A brand for finding collections.
-     * @return HashSet of Strings with collections in brand .
-     */
+    @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
     public Set<String> getCollections(final String brand) {
-        try (EntityManagerAc entityManager = getEntityManager()) {
-            entityManager.getTransaction().begin();
+        try {
             TypedQuery<String> namedQuery = entityManager.createNamedQuery("Product.getCollections", String.class);
             namedQuery.setParameter("brand", brand);
-            entityManager.getTransaction().commit();
             return new HashSet<String>(namedQuery.getResultList());
+        } catch (Exception e) {
+            System.out.println("ProductDaoImpl.getCollections error:" + e.getMessage());
+            return null;
         }
     }
 
-    /**
-     * Get Products from DB by filter
-     *
-     * @param brand      A brand for finding.
-     * @param collection A collection for finding.
-     * @param price      A price for finding.
-     * @param weight     A weight for finding.
-     * @param length     A length for finding.
-     * @param width      A width for finding.
-     * @param color      A color for finding.
-     * @return HashSet of Products after filtering.
-     */
+    @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
     public Set<Product> getFilteredProducts(String brand, String collection, String price,
                                             String weight, String length, String width,
                                             String color) {
@@ -151,11 +121,12 @@ public class ProductDaoImpl extends GenericDaoImpl<Product, Long> implements Pro
                 flag = true;
             }
         }
-        try (EntityManagerAc entityManager = getEntityManager()) {
-            entityManager.getTransaction().begin();
+        try {
             Query nativeQuery = entityManager.createNativeQuery(query, Product.class);
-            entityManager.getTransaction().commit();
             return new HashSet<Product>(nativeQuery.getResultList());
+        } catch (Exception e) {
+            System.out.println("ProductDaoImpl.getFilteredProducts error:" + e.getMessage());
+            return null;
         }
     }
 
@@ -167,17 +138,14 @@ public class ProductDaoImpl extends GenericDaoImpl<Product, Long> implements Pro
         }
     }
 
-    /**
-     * Get all colors from DB.
-     *
-     * @return HashSet of Strings with all colors in DB .
-     */
+    @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
     public Set<String> getColors() {
-        try (EntityManagerAc entityManager = getEntityManager()) {
-            entityManager.getTransaction().begin();
+        try {
             TypedQuery<String> namedQuery = entityManager.createNamedQuery("Product.getColors", String.class);
-            entityManager.getTransaction().commit();
             return new HashSet<String>(namedQuery.getResultList());
+        } catch (Exception e) {
+            System.out.println("ProductDaoImpl.getColors error:" + e.getMessage());
+            return null;
         }
     }
 }

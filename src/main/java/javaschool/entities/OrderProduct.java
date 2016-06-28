@@ -2,6 +2,7 @@ package javaschool.entities;
 
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 
 @Entity
@@ -10,7 +11,7 @@ import javax.persistence.*;
         @NamedQuery(name = "OrderProduct.getOrderProducts", query = "SELECT O from OrderProduct O where orderId=:order"),
         @NamedQuery(name = "OrderProduct.getAllOrderProduct", query = "SELECT O from OrderProduct O")
 })
-public class OrderProduct {
+public class OrderProduct implements Serializable {
     private Long Id;
     private Orders orderId;
     private Product productId;

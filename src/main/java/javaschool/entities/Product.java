@@ -1,6 +1,7 @@
 package javaschool.entities;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -9,7 +10,7 @@ import java.util.Set;
 @NamedQueries({
 
         @NamedQuery(name = "Product.getProducts", query = "SELECT P from Product P"),
-        @NamedQuery(name = "Product.getProductsInCollection", query = "SELECT P from Product P where P.brand=:brand and P.collection= :collection"),
+        @NamedQuery(name = "Product.getProductsInCollection", query = "SELECT P from Product P where P.brand=:brand and P.collection=:collection"),
         @NamedQuery(name = "Product.getBrands", query = "SELECT P.brand from Product P"),
         @NamedQuery(name = "Product.getBrand", query = "SELECT P.brand from Product P where P.collection=:collection"),
         @NamedQuery(name = "Product.getCollections", query = "SELECT P.collection from Product P where P.brand = :brand"),
@@ -17,8 +18,7 @@ import java.util.Set;
         @NamedQuery(name = "Product.getColors", query = "SELECT P.color from Product P")
 
 })
-
-public class Product {
+public class Product implements Serializable {
     private Long id;
     private String category;
     private String brand;

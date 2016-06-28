@@ -1,34 +1,21 @@
 package javaschool.dao;
 
-import javaschool.em.EntityManagerAc;
-import javaschool.em.EntityManagerAcFactory;
-import javaschool.em.EntityManagerAcImpl;
-import org.junit.Before;
+import javaschool.service.ProductService;
+import org.junit.Ignore;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Controller;
 
-import javax.persistence.EntityManager;
-
-import static org.junit.Assert.*;
-
-/**
- * Created by Sergey on 26.06.2016.
- */
+@Controller
 public class ProductDaoImplTest {
 
-    @Before
-    public void setUp() throws Exception {
-        //EntityManager entityManagerAc = EntityManagerAcFactory.createEntityManagerAc();
-    }
+    @Autowired
+    @Qualifier(value = "ProductService")
+    private ProductService productService;
 
-    @Test
-    public void testGetProducts() throws Exception {
-        ProductDaoImpl productDao = new ProductDaoImpl();
-        System.out.println(productDao.getProducts());
-    }
-
+    @Ignore
     @Test
     public void testGetBrands() throws Exception {
-        ProductDaoImpl productDao = new ProductDaoImpl();
-        System.out.println(productDao.getBrands());
     }
 }

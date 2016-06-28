@@ -6,48 +6,41 @@
  */
 package javaschool.dao;
 
-import javaschool.em.EntityManagerAc;
 import javaschool.entities.OrderProduct;
 import javaschool.entities.Orders;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.TypedQuery;
 import java.util.List;
 
+@Repository("OrderProductDao")
 public class OrderProductDaoImpl extends GenericDaoImpl<OrderProduct, Long> implements OrderProductDao {
-    /**
-     * Class constructor.
-     */
     public OrderProductDaoImpl() {
-        super(OrderProduct.class);
+        super(javaschool.entities.OrderProduct.class);
     }
 
-    /**
-     * Get a list of OrderProducts from DB for Orders.
-     *
-     * @param order An order for search.
-     * @return List of OrderProduct.
-     */
+    @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
     public List<OrderProduct> getOrderProduct(final Orders order) {
-        try (EntityManagerAc entityManager = getEntityManager()) {
-            entityManager.getTransaction().begin();
+        try {
             TypedQuery<OrderProduct> namedQuery = entityManager.createNamedQuery("OrderProduct.getOrderProducts", OrderProduct.class);
             namedQuery.setParameter("order", order);
-            entityManager.getTransaction().commit();
             return namedQuery.getResultList();
+        } catch (Exception e) {
+            System.out.println("OrdersDaoImpl.getOrderProduct error:" + e.getMessage());
+            return null;
         }
     }
 
-    /**
-     * Get a list of all OrderProducts from DB.
-     *
-     * @return List of all OrderProducts.
-     */
+    @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
     public List<OrderProduct> getOrderProducts() {
-        try (EntityManagerAc entityManager = getEntityManager()) {
-            entityManager.getTransaction().begin();
+        try {
             TypedQuery<OrderProduct> namedQuery = entityManager.createNamedQuery("OrderProduct.getAllOrderProduct", OrderProduct.class);
-            entityManager.getTransaction().commit();
             return namedQuery.getResultList();
+        } catch (Exception e) {
+            System.out.println("OrdersDaoImpl.getOrderProducts error:" + e.getMessage());
+            return null;
         }
     }
 }

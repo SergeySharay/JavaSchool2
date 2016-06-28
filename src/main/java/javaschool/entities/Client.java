@@ -1,6 +1,7 @@
 package javaschool.entities;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
@@ -11,7 +12,7 @@ import java.util.Set;
         @NamedQuery(name = "Client.getClient", query = "SELECT C from Client C where C.email =:email"),
         @NamedQuery(name = "Client.getOrders", query = "SELECT O from Orders O where client=:client")
 })
-public class Client {
+public class Client implements Serializable {
 
     private Long clientId;
     private String email;
@@ -21,7 +22,7 @@ public class Client {
     private Integer permission;
     private Date birthday;
     private Set<Orders> orders;
-    private Set<ClientAdress> clientAdressSet;
+    private Set<ClientAddress> clientAddressSet;
 
     public Client() {
     }
@@ -45,13 +46,13 @@ public class Client {
         this.clientId = clientId;
     }
 
-    @OneToMany(targetEntity = ClientAdress.class, mappedBy = "client", fetch = FetchType.EAGER)
-    public Set<ClientAdress> getClientAdressSet() {
-        return clientAdressSet;
+    @OneToMany(targetEntity = ClientAddress.class, mappedBy = "client", fetch = FetchType.EAGER)
+    public Set<ClientAddress> getClientAddressSet() {
+        return clientAddressSet;
     }
 
-    public void setClientAdressSet(Set<ClientAdress> clientAdressSet) {
-        this.clientAdressSet = clientAdressSet;
+    public void setClientAddressSet(Set<ClientAddress> clientAddressSet) {
+        this.clientAddressSet = clientAddressSet;
     }
 
     @OneToMany(targetEntity = Orders.class, mappedBy = "client", cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)

@@ -6,75 +6,69 @@
  */
 package javaschool.dao;
 
-import javaschool.em.EntityManagerAc;
-import javaschool.em.EntityManagerAcFactory;
-import org.apache.log4j.Logger;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.io.Serializable;
 
+@Repository("GenericDao")
 public class GenericDaoImpl<T, PK extends Serializable> implements GenericDao<T, PK> {
-    protected static Logger logger = Logger.getLogger(ClientAdressDaoImpl.class);
 
+    protected EntityManager entityManager;
     private Class<T> type;
-    /**
-     * Class constructor.
-     *
-     * @param type An Entity.class
-     */
+
+    public GenericDaoImpl() {
+    }
+
     public GenericDaoImpl(Class<T> type) {
         this.type = type;
     }
-    public EntityManagerAc getEntityManager() {
-        return EntityManagerAcFactory.createEntityManagerAc();
+
+    @PersistenceContext
+    public void setEntityManager(EntityManager entityManager) {
+        this.entityManager = entityManager;
     }
-    /**
-     * Add an entity to DB
-     *
-     * @param object An entity for adding
-     * @return An entity from DB after adding
-     */
+
+    @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
     public T add(T object) {
 
-        try (EntityManagerAc entityManager = getEntityManager()) {
-            entityManager.getTransaction().begin();
-            T objectFromDB = entityManager.merge(object);
-            entityManager.getTransaction().commit();
+        try {
+            T objectFromDB = this.entityManager.merge(object);
             return objectFromDB;
+        } catch (Exception e) {
+            System.out.println("GenericDao.add error:" + e.getMessage());
+            return null;
         }
     }
-    /**
-     * Delete an entity from DB by Id.
-     *
-     * @param id Id from DB
-     */
+
+    @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
     public void delete(PK id) {
-        try (EntityManagerAc entityManager = getEntityManager()) {
-            entityManager.getTransaction().begin();
-            entityManager.remove(get(id));
-            entityManager.getTransaction().commit();
+        try {
+            this.entityManager.remove(get(id));
+        } catch (Exception e) {
+            System.out.println("GenericDao.delete error:" + e.getMessage());
         }
     }
-    /**
-     * Get an entity from DB by Id.
-     *
-     * @param id Id from DB.
-     * @return An Entity from DB.
-     */
+
+    @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
     public T get(PK id) {
-        try (EntityManagerAc entityManager = getEntityManager()) {
-            return entityManager.find(type, id);
+        try {
+            return this.entityManager.find(type, id);
+        } catch (Exception e) {
+            System.out.println("GenericDao.get error:" + e.getMessage());
+            return null;
         }
     }
-    /**
-     * Update current Entity in DB.
-     *
-     * @param object An Entity for update
-     */
+
+    @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
     public void update(T object) {
-        try (EntityManagerAc entityManager = getEntityManager()) {
-            entityManager.getTransaction().begin();
-            entityManager.merge(object);
-            entityManager.getTransaction().commit();
+        try {
+            this.entityManager.merge(object);
+        } catch (Exception e) {
+            System.out.println("GenericDao.update error:" + e.getMessage());
         }
     }
 }

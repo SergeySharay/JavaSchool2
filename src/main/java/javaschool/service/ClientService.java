@@ -1,15 +1,11 @@
-/**
- * @author Sergey Sharay
- * @version 1.0
- */
-package javaschool.dao;
+package javaschool.service;
 
 import javaschool.entities.Client;
 
 import java.util.List;
 import java.util.Map;
 
-public interface ClientDao extends GenericDao<Client, Long> {
+public interface ClientService extends GenericService<Client, Long> {
 
     List<Client> getClients();
 
@@ -18,3 +14,4 @@ public interface ClientDao extends GenericDao<Client, Long> {
     Client getClient(String email);
 
 }
+

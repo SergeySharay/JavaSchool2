@@ -1,6 +1,7 @@
 package javaschool.entities;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -13,7 +14,7 @@ import java.util.Set;
         @NamedQuery(name = "Orders.getBucket", query = "SELECT O.id from OrderProduct O where orderId=:orderId"),
 })
 
-public class Orders {
+public class Orders implements Serializable {
 
     private Long id;
     private Client client;

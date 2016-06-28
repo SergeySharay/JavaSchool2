@@ -1,12 +1,13 @@
 package javaschool.entities;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "client_adress", schema = "client")
-@NamedQuery(name = "ClientAdress.getAdress", query = "SELECT C from ClientAdress C where client=:client")
+@NamedQuery(name = "ClientAdress.getAdress", query = "SELECT C from ClientAddress C where client=:client")
 
-public class ClientAdress {
+public class ClientAddress implements Serializable {
     private Long clientAdressId;
     private Client client;
     private String country;
@@ -16,7 +17,7 @@ public class ClientAdress {
     private String flat;
     private Long zipcode;
 
-    public ClientAdress() {
+    public ClientAddress() {
     }
 
     @Id

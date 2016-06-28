@@ -1,15 +1,12 @@
-/**
- * @author Sergey Sharay
- * @version 1.0
- */
-package javaschool.dao;
+package javaschool.service;
+
 
 import javaschool.entities.Client;
 import javaschool.entities.Orders;
 
 import java.util.List;
 
-public interface OrdersDao extends GenericDao<Orders, Long> {
+public interface OrdersService extends GenericService<Orders, Long> {
 
     List<Orders> getOrders();
 

@@ -1,11 +1,12 @@
-package javaschool.dao;
+package javaschool.service;
 
 import javaschool.entities.Product;
 
 import java.util.List;
 import java.util.Set;
 
-public interface ProductDao extends GenericDao<Product, Long> {
+public interface ProductService extends GenericService<Product, Long> {
+
     List<Product> getProducts();
 
     List<Product> getCollectionProducts(String brand, String collection);
@@ -23,4 +24,6 @@ public interface ProductDao extends GenericDao<Product, Long> {
                                      String color);
 
     Set<String> getColors();
+
+    Product findById(Long id);
 }

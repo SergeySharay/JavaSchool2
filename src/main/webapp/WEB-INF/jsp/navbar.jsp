@@ -18,9 +18,14 @@
                     <li><a href="/site/contacts">Contacts</a></li>
                     <li><a href="/site/delivery">Delivery</a></li>
                     <li><a href="/site/pay">Payment</a></li>
+                    <li><a href="/site/login">Login</a></li>
                 </ul>
             </div>
         </div>
     </div>
 </div>
-<div id="bucket"><a href="bucket.jsp"><img src="../../resources/theme/img/bucket.png"></a></div>
+<div class="container">
+    <div class="col-xs-12">
+        <div id="bucket"><a href="bucket.jsp"><img src="resources/img/bucket.png"></a></div>
+    </div>
+</div>

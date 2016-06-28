@@ -9,39 +9,27 @@ import org.springframework.web.servlet.ModelAndView;
 public class HelloController {
 
     @RequestMapping("/")
-    protected ModelAndView Index(Model model) {
-        // model.addAttribute("msg", "OMG!");
+    protected ModelAndView index(Model model) {
         return new ModelAndView("index");
     }
-    /*  @RequestMapping("/")
-      public ModelAndView index(){
-          ModelAndView modelAndView = new ModelAndView();
-          modelAndView.setViewName("index");
-          return modelAndView;
-      }*/
-
 
     @RequestMapping("/about")
-    protected String About(Model model) {
-        // model.addAttribute("msg", "OMG!");
+    protected String about(Model model) {
         return "about";
     }
 
     @RequestMapping("/contacts")
-    protected String Contacts(Model model) {
-        // model.addAttribute("msg", "OMG!");
+    protected String contacts(Model model) {
         return "contacts";
     }
 
     @RequestMapping("/delivery")
-    protected String Delivery(Model model) {
-        // model.addAttribute("msg", "OMG!");
+    protected String delivery(Model model) {
         return "delivery";
     }
 
     @RequestMapping("/pay")
-    protected String Pay(Model model) {
-        // model.addAttribute("msg", "OMG!");
+    protected String pay(Model model) {
         return "pay";
     }
 
