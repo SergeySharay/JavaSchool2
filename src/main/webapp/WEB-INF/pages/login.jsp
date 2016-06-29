@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="utf-8" %>
 <html>
 <head>
@@ -16,18 +18,17 @@
                     <h3 class="panel-title" align="center">If you have an account, please log in.</h3>
                 </div>
                 <div class="panel-body">
-                    <form role="form" method="POST" action="/login">
-                        <c:if test="${checkac=='false'}">
-                            <div class="privatetable"><p align="center">Неправильно введен Логин или Пароль.</p></div>
-                        </c:if>
+
+                    <form role="form" method="POST" action="/site/login">
                         <div class="form-group">
-                            <input type="email" name="j_username" id="email" class="form-control input-sm"
+                            <input type="email" name="username" id="email" class="form-control input-sm"
                                    placeholder="Email" required>
                         </div>
                         <div class="form-group">
-                            <input type="password" name="j_password" id="password" class="form-control input-sm"
+                            <input type="password" name="password" id="password" class="form-control input-sm"
                                    placeholder="Password" required>
                         </div>
+                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                         <input type="submit" value="Login" class="btn btn-info btn-block">
                     </form>
                 </div>

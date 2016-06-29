@@ -175,3 +175,9 @@ a.spoiler.collapsed:after{
     text-align: center;
     font-weight: 600;
 }
+
+.btn-logout {
+    background-color: #333333;
+    border-color: #444444;
+    margin-top: 11px;
+}
