@@ -23,7 +23,7 @@
     </div>
     <!-- хлебные крошки-->
     <div class="row">
-        <form role="form" method="get" action="Filter" class="btn">
+        <form role="form" method="get" action="/site/filter" class="btn">
             <input type="submit" value="Search" class="btn btn-info">
         </form>
         <c:forEach items="${catalogMenuBrandList}" var="brand">

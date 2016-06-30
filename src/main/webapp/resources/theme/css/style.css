@@ -153,6 +153,7 @@ a.spoiler.collapsed:after{
 }
 .feat{
     display: inline-block;
+    margin-left: 15px;
 }
 #buttons{
     padding-left: 50px;

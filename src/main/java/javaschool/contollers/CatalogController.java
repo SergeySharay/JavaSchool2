@@ -66,5 +66,24 @@ public class CatalogController {
         modelAndView.addObject("Product", productService.findById(product));
         return modelAndView;
     }
+
+    @RequestMapping(value = "/bucket", method = RequestMethod.GET)
+    public ModelAndView bucket() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("bucket");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/filter", method = RequestMethod.GET)
+    public ModelAndView filter() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("filter");
+        modelAndView.addObject("FilterBrands", productService.getBrands());
+        modelAndView.addObject("FilterCollections", productService.getCollections());
+        modelAndView.addObject("FilterProducts", productService.getProducts());
+        modelAndView.addObject("FilterColors", productService.getColors());
+
+        return modelAndView;
+    }
 }
 

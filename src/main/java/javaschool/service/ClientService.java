@@ -1,9 +1,11 @@
 package javaschool.service;
 
 import javaschool.entities.Client;
+import javaschool.entities.Orders;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public interface ClientService extends GenericService<Client, Long> {
 
@@ -13,5 +15,6 @@ public interface ClientService extends GenericService<Client, Long> {
 
     Client getClient(String email);
 
+    Set<Orders> getOrders(final Client client);
 }
 

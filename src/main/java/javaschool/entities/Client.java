@@ -19,7 +19,7 @@ public class Client implements Serializable {
     private String name;
     private String surname;
     private String password;
-    private Integer permission;
+    private Long permission;
     private Date birthday;
     private Set<Orders> orders;
     private Set<ClientAddress> clientAddressSet;
@@ -32,7 +32,7 @@ public class Client implements Serializable {
         this.name = name;
         this.surname = surname;
         this.password = password;
-        this.permission = 2;
+        this.permission = 2L;
     }
 
     @Id
@@ -101,11 +101,11 @@ public class Client implements Serializable {
     }
 
     @Column(name = "client_permission", length = 50)
-    public Integer getPermission() {
+    public Long getPermission() {
         return permission;
     }
 
-    public void setPermission(Integer permission) {
+    public void setPermission(Long permission) {
         this.permission = permission;
     }
 

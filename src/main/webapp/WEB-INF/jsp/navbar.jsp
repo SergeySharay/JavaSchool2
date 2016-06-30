@@ -25,7 +25,7 @@
                         <li><a href="/site/login">Login</a></li>
                     </sec:authorize>
                     <sec:authorize access="isAuthenticated()">
-                    <li><a href="/site/catalog"><i class="glyphicon glyphicon-user"></i>
+                    <li><a href="/site/cabinet"><i class="glyphicon glyphicon-user"></i>
                         <c:out value="${pageContext.request.userPrincipal.name}"/></a></li>
                     <li>
                         <form action="/site/logout" method="post">
@@ -40,6 +40,6 @@
 </div>
 <div class="container">
     <div class="col-xs-12">
-        <div id="bucket"><a href="bucket.jsp"><img src="resources/img/bucket.png"></a></div>
+        <div id="bucket"><a href="/site/bucket"><img src="resources/img/bucket.png"></a></div>
     </div>
 </div>
