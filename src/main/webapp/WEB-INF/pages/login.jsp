@@ -16,9 +16,11 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title" align="center">If you have an account, please log in.</h3>
+                    <c:if test="${not empty SPRING_SECURITY_LAST_EXCEPTION}">
+                        <div align="center">Invalid Login or Password.</div>
+                    </c:if>
                 </div>
                 <div class="panel-body">
-
                     <form role="form" method="POST" action="/site/login">
                         <div class="form-group">
                             <input type="email" name="username" id="email" class="form-control input-sm"

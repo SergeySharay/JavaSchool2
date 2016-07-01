@@ -40,4 +40,12 @@ public class ClientServiceImpl extends GenericServiceImpl<Client, Long> implemen
         return clientDao.getOrders(client);
     }
 
+    public void updateByClient(Client client) {
+        clientDao.update(client);
+    }
+
+    public Client addByClient(Client client) {
+        return clientDao.add(client);
+    }
+
 }

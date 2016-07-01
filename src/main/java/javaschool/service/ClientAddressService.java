@@ -7,5 +7,8 @@ public interface ClientAddressService extends GenericService<ClientAddress, Long
 
     ClientAddress getAddress(Client client);
 
+    public void updateByClientAddress(ClientAddress clientAddress);
+
+    ClientAddress addByClientAddress(ClientAddress clientAddress);
 }
 

@@ -10,7 +10,7 @@ import java.util.Set;
 @NamedQueries({
         @NamedQuery(name = "Client.getClients", query = "SELECT C from Client C"),
         @NamedQuery(name = "Client.getClient", query = "SELECT C from Client C where C.email =:email"),
-        @NamedQuery(name = "Client.getOrders", query = "SELECT O from Orders O where client=:client")
+        @NamedQuery(name = "Client.getOrders", query = "SELECT O from Orders O where O.client=:client")
 })
 public class Client implements Serializable {
 
@@ -33,6 +33,7 @@ public class Client implements Serializable {
         this.surname = surname;
         this.password = password;
         this.permission = 2L;
+        this.birthday = null;
     }
 
     @Id

@@ -59,7 +59,7 @@
                 <div class="privatetable"><p align="center">Email already exist</p></div>
             </c:if>
             <div class="panel-body privatetable">
-                <form role="form" method="POST" action="/cabinetpersonal">
+                <form role="form" method="POST" action="/site/cabinetpersonal">
                     <div class="form-group">
                         <input type="text" name="firstName" id="firstName" class="form-control input-sm"
                                maxlength="50" placeholder="First Name" pattern="^[A-Za-zА-Яа-яЁё\s\-]+$">
@@ -78,8 +78,10 @@
                     </div>
                     <div class="form-group">
                         <input type="text" name="date" id="date" class="form-control input-sm"
-                               placeholder="Birthday DD.MM.YYYY">
+                               placeholder="Birthday DD.MM.YYYY"
+                               pattern="[0-3][0-9].[0-1][0-9].[1-2][0-9][0-9][0-9]">
                     </div>
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                     <input type="submit" value="Save" class="btn btn-info btn-block">
                 </form>
             </div>

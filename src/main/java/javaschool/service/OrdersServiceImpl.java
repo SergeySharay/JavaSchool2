@@ -29,4 +29,12 @@ public class OrdersServiceImpl extends GenericServiceImpl<Orders, Long> implemen
     public List<Long> getClientOrders(Client client) {
         return ordersDao.getClientOrders(client);
     }
+
+    public Orders getOrderbyId(Long id) {
+        return ordersDao.get(id);
+    }
+
+    public void updateByOrder(Orders orders) {
+        ordersDao.update(orders);
+    }
 }

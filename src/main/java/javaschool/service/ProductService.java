@@ -26,4 +26,6 @@ public interface ProductService extends GenericService<Product, Long> {
     Set<String> getColors();
 
     Product findById(Long id);
+
+    Product addNewProduct(Product product);
 }

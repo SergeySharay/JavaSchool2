@@ -57,4 +57,8 @@ public class ProductServiceImpl extends GenericServiceImpl<Product, Long> implem
     public Product findById(Long id) {
         return productDao.get(id);
     }
+
+    public Product addNewProduct(Product product) {
+        return productDao.add(product);
+    }
 }

@@ -11,7 +11,7 @@
         </div>
         <div class="collapse navbar-collapse" id="responsive-menu2">
             <ul class="nav navbar-nav">
-                <li><a href="/site/cabinet"><i class="glyphicon glyphicon-refresh"></i>Cabinet</a></li>
+                <li><a href="/site/cabinet"><i class="glyphicon glyphicon-refresh"></i> Cabinet</a></li>
                 <li><a href="/site/cabinetorders">Orders</a></li>
                 <li><a href="/site/cabinetpersonal">Personal</a></li>
                 <li><a href="/site/cabinetaddress">Address</a></li>

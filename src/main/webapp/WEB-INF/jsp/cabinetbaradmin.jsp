@@ -14,7 +14,7 @@
                 <li><a href="/site/adminclients"><i class="glyphicon glyphicon-th"></i> Clients</a></li>
                 <li><a href="/site/adminorders"><i class="glyphicon glyphicon-list-alt"></i> Orders</a></li>
                 <li><a href="/site/adminproducts"><i class="glyphicon glyphicon-edit"></i> Products</a></li>
-                <li><a href="#"><i class="glyphicon glyphicon-globe"></i> Statistic</a></li>
+                <li><a href="/site/adminstatistic"><i class="glyphicon glyphicon-globe"></i> Statistic</a></li>
             </ul>
         </div>
     </div>

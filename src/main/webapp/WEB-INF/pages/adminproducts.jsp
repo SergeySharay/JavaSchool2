@@ -13,7 +13,7 @@
     <div class="panel panel-default" id="order">
         <div class="panel-heading">
             <div align="right">
-                <form role="form" method="get" action="#" class="btn">
+                <form role="form" method="get" action="/site/adminproductadd" class="btn">
                     <input type="submit" value="Add New Product" class="btn btn-info">
                 </form>
             </div>
@@ -36,7 +36,7 @@
                         <td><c:out value="${product.name}"/></td>
                         <td><c:out value="${product.price}"/></td>
                         <td>
-                            <form method="get" action="#">
+                            <form method="get" action="/site/adminproductpage">
                                 <input type="submit" value="More">
                                 <input type="hidden" name="productId" value="<c:out value="${product.id}"/>"></form>
                         </td>

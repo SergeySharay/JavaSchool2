@@ -20,6 +20,15 @@ public class ClientAddress implements Serializable {
     public ClientAddress() {
     }
 
+    public ClientAddress(Client client) {
+        this.client = client;
+        this.country = null;
+        this.city = null;
+        this.street = null;
+        this.house = null;
+        this.flat = null;
+        this.zipcode = null;
+    }
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", length = 10, unique = true, nullable = false)

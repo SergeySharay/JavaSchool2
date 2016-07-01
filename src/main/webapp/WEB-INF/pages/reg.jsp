@@ -15,15 +15,15 @@
                 <div class="panel-heading">
                     <h3 class="panel-title" align="center">Cats are waiting!</h3>
                     <c:if test="${emailerror=='true'}">
-                        <div class="privatetable"><p align="center">Пользователь уже зарегистрирован.</p></div>
+                        <div class="privatetable"><p align="center">Email already exist.</p></div>
                     </c:if>
                     <c:if test="${passerror=='true'}">
-                        <div class="privatetable"><p align="center">Неправильно подтвержден пароль.</p></div>
+                        <div class="privatetable"><p align="center">Invalid password confirm.</p></div>
                     </c:if>
 
                 </div>
                 <div class="panel-body">
-                    <form role="form" method="POST" action="Registration">
+                    <form role="form" method="POST" action="/site/reg">
                         <div class="row">
                             <div class="col-xs-6 col-sm-6 col-md-6">
                                 <div class="form-group">
@@ -56,6 +56,7 @@
                                 </div>
                             </div>
                         </div>
+                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                         <input type="submit" value="Sing Up" class="btn btn-info btn-block">
                     </form>
                 </div>

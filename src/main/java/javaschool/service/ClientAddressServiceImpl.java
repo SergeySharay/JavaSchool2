@@ -23,4 +23,12 @@ public class ClientAddressServiceImpl extends GenericServiceImpl<ClientAddress, 
     public ClientAddress getAddress(Client client) {
         return clientAddressDao.getAddress(client);
     }
+
+    public void updateByClientAddress(ClientAddress clientAddress) {
+        clientAddressDao.update(clientAddress);
+    }
+
+    public ClientAddress addByClientAddress(ClientAddress clientAddress) {
+        return clientAddressDao.add(clientAddress);
+    }
 }

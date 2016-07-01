@@ -16,5 +16,9 @@ public interface ClientService extends GenericService<Client, Long> {
     Client getClient(String email);
 
     Set<Orders> getOrders(final Client client);
+
+    public void updateByClient(Client client);
+
+    Client addByClient(Client client);
 }
 

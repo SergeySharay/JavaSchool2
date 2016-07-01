@@ -80,7 +80,7 @@
                         <input type="hidden" name="orderId" value="<c:out value="${orders.id}"/>">
                     </form>
 
-                    <form method="get" action="#" class="privatetable feat">
+                    <form method="get" action="/site/cabinetpayment" class="privatetable feat">
                         <input type="submit" class="btn btn-primary" value="Оплатить заказ">
                         <input type="hidden" name="summer" value="<c:out value="${sum}"/>">
                     </form>

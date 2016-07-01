@@ -37,7 +37,7 @@
                         <td><c:out value="${orders.orderStatus}"/></td>
                         <td><c:out value="${format.format(orders.orderDate)}"/></td>
                         <td>
-                            <form method="get" action="#">
+                            <form method="get" action="/site/adminorderpage">
                                 <input type="submit" value="More">
                                 <input type="hidden" name="orderId" value="<c:out value="${orders.id}"/>"></form>
                         </td>

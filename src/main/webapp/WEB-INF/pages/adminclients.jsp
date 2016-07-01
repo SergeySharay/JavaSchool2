@@ -24,7 +24,6 @@
                     <th>Email</th>
                     <th>Brthday</th>
                     <th>Status</th>
-                    <th>Change Status</th>
                 </tr>
                 <c:forEach items="${clientList}" var="client">
                     <tr>
@@ -35,11 +34,8 @@
                         <td>
                                 ${client.birthday == null ? "Отсутсвует" : format.format(client.birthday)}
                         </td>
-                        <td><c:out value="${client.permission}"/></td>
                         <td>
-                            <form method="post" action="#">
-                                <input type="submit" value="изменить">
-                                <input type="hidden" name="clientId" value="<c:out value="${client.clientId}"/>"></form>
+                                ${client.permission == 2 ? "Покупатель" : "Сотрудник"}
                         </td>
                     </tr>
                 </c:forEach>

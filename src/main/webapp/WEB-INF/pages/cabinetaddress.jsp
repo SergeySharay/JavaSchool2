@@ -15,7 +15,7 @@
                 <h3 class="panel-title">Address</h3>
             </div>
             <div class="panel-body privatetable">
-                <form role="form" method="POST" action="/cabinetaddress">
+                <form role="form" method="POST" action="/site/cabinetaddress">
                     <div class="form-group">
                         <input type="text" name="country" id="country" class="form-control input-sm"
                                placeholder="Country" maxlength="40" pattern="^[A-Za-zА-Яа-яЁё\s\-]+$">
@@ -40,6 +40,7 @@
                         <input type="number" name="zipcode" id="zipcode" class="form-control input-sm"
                                placeholder="Zipcode" size="6" min="100000" max="999999">
                     </div>
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                     <input type="submit" value="Save" class="btn btn-info btn-block">
                 </form>
             </div>
