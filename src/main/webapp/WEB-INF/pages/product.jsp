@@ -87,9 +87,10 @@
                         alt="">
                 </p>
 
-                <form role="form" method="POST" action="#">
+                <form role="form" method="GET" action="/site/addProduct">
                     <p align="center">
                         <input type="submit" value="Buy" class="btn btn-primary">
+                        <input type="hidden" name="Page" value="/product">
                         <input type="hidden" name="Brand" value="<c:out value="${Brand}"/>">
                         <input type="hidden" name="Collection" value="<c:out value="${Collection}"/>">
                         <input type="hidden" name="Product" value="<c:out value="${Product.id}"/>">

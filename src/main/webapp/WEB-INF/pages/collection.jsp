@@ -51,7 +51,7 @@
                                 <input type="hidden" name="Collection" value="<c:out value="${Collection}"/>">
                             </form>
                         </div>
-                        <form role="form" method="get" action="#">
+                        <form role="form" method="get" action="/site/addProduct">
                             <div id="blok1" class="btn btn-primary">
                                 <c:out value="${product.name}"/>
                             </div>
@@ -60,9 +60,10 @@
                             </div>
                             <p align="right">
                                 <input type="submit" value="Buy" class="btn btn-success buyitem">
-                                <input type="hidden" name="Brand" value="<c:out value="${Brand}"/>">
-                                <input type="hidden" name="Collection" value="<c:out value="${Collection}"/>">
-                                <input type="hidden" name="Product" value="<c:out value="${product.id}"/>">
+                                <input type="hidden" name="Page" value="/collection">
+                                <input type="hidden" name="Brand" value="${Brand}">
+                                <input type="hidden" name="Collection" value="${Collection}">
+                                <input type="hidden" name="Product" value="${product.id}">
                             </p>
                         </form>
                     </div>

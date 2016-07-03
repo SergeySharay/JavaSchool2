@@ -92,7 +92,7 @@
                         <img src="resources/img/pic/<c:out value="${product.id}"/>.jpg" alt="">
 
                         <div class="caption">
-                            <form role="form" method="GET" action="#">
+                            <form role="form" method="GET" action="/site/addProduct">
 
                                 <div id="blok1" class="btn btn-primary">
                                     <c:out value="${product.name}"/>
@@ -101,6 +101,7 @@
                                     <c:out value="${product.price}"/>
                                 </div>
                                 <p align="right">
+                                    <input type="hidden" name="Page" value="/filter">
                                     <input type="submit" value="Buy" class="btn btn-success buyitem">
                                     <input type="hidden" name="Product" value="<c:out value="${product.id}"/>">
                                 </p></form>

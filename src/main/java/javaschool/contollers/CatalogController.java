@@ -1,16 +1,19 @@
 package javaschool.contollers;
 
 import com.google.common.base.Strings;
+import javaschool.entities.Product;
 import javaschool.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 @Controller
+@SessionAttributes(value = "Cart")
 public class CatalogController {
 
 
@@ -37,8 +40,8 @@ public class CatalogController {
     }
 
     @RequestMapping(value = "/collection", method = RequestMethod.GET)
-    public ModelAndView collection(@RequestParam(value = "Brand") String brand,
-                                   @RequestParam(value = "Collection") String collection) {
+    public ModelAndView collection(@RequestParam(value = "Brand", required = false) String brand,
+                                   @RequestParam(value = "Collection", required = false) String collection) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("collection");
         if (Strings.isNullOrEmpty(brand)) {
@@ -68,10 +71,15 @@ public class CatalogController {
     }
 
     @RequestMapping(value = "/bucket", method = RequestMethod.GET)
-    public ModelAndView bucket() {
+    public ModelAndView bucket(@ModelAttribute(value = "Cart") Map<Product, Integer> Cart) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("bucket");
         return modelAndView;
+    }
+
+    @ModelAttribute("Cart")
+    public Map<Product, Integer> createMap() {
+        return new LinkedHashMap<Product, Integer>();
     }
 
     @RequestMapping(value = "/filter", method = RequestMethod.GET)
