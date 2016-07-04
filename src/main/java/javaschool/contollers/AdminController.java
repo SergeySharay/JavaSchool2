@@ -5,6 +5,7 @@ import javaschool.entities.Product;
 import javaschool.service.ClientService;
 import javaschool.service.OrdersService;
 import javaschool.service.ProductService;
+import javaschool.service.StatisticService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -17,7 +18,6 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
 @Controller
-
 public class AdminController {
 
     DateFormat format = new SimpleDateFormat("dd.MM.yyyy");
@@ -33,6 +33,12 @@ public class AdminController {
     @Autowired
     @Qualifier(value = "ProductService")
     private ProductService productService;
+
+    @Autowired
+    @Qualifier(value = "StatisticService")
+    private StatisticService statisticService;
+
+
 
 
     @RequestMapping(value = "/admin", method = RequestMethod.GET)
@@ -151,6 +157,11 @@ public class AdminController {
     public ModelAndView statistic() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("adminstatistic");
+        modelAndView.addObject("productLongMap", statisticService.findTopTenProducts());
+        modelAndView.addObject("ordersLongMap", statisticService.findTopTenClients());
+        modelAndView.addObject("ordersListDate", statisticService.ordersForAWeeks(1));
+        modelAndView.addObject("ordersListDateMonth", statisticService.ordersForAWeeks(2));
+        modelAndView.addObject("format", format);
         return modelAndView;
     }
 

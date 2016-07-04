@@ -77,9 +77,8 @@
                                maxlength="30" placeholder="Password" pattern="^[A-Za-z\0-9]+$">
                     </div>
                     <div class="form-group">
-                        <input type="text" name="date" id="date" class="form-control input-sm"
-                               placeholder="Birthday DD.MM.YYYY"
-                               pattern="[0-3][0-9].[0-1][0-9].[1-2][0-9][0-9][0-9]">
+                        <input type="date" name="date" id="date" class="form-control input-sm"
+                               placeholder="Birthday DD.MM.YYYY">
                     </div>
                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                     <input type="submit" value="Save" class="btn btn-info btn-block">

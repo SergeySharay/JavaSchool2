@@ -13,14 +13,14 @@
     <div class="col-xs-12 col-sm-6 col-md-6">
         <div class="panel panel-default">
             <div class="panel-heading">
-                Топ 10 товаров
+                Top 10 Products
             </div>
             <div class="panel-body privatetable">
                 <table class="table">
                     <tr>
                         <th>Id</th>
-                        <th>Наименование</th>
-                        <th>Сколько куплено</th>
+                        <th>Name</th>
+                        <th>Quantity</th>
                     </tr>
                     <c:forEach items="${productLongMap}" var="product">
                         <tr>
@@ -36,14 +36,14 @@
     <div class="col-xs-12 col-sm-6 col-md-6">
         <div class="panel panel-default">
             <div class="panel-heading">
-                Топ 10 клиентов
+                Top 10 Clients
             </div>
             <div class="panel-body">
                 <table class="table">
                     <tr>
                         <th>Id</th>
-                        <th>Имя,Фамилия</th>
-                        <th>Количество заказов</th>
+                        <th>First Name, Last Name</th>
+                        <th>Orders</th>
                     </tr>
                     <c:forEach items="${ordersLongMap}" var="orders">
                         <tr>
@@ -62,14 +62,14 @@
     <div class="col-xs-12 col-sm-6 col-md-6">
         <div class="panel panel-default">
             <div class="panel-heading">
-                Заказы за неделю
+                Orders For A Week.
             </div>
             <div class="panel-body privatetable">
                 <table class="table">
                     <tr>
-                        <th>Id Заказа</th>
-                        <th>Клиент</th>
-                        <th>Дата</th>
+                        <th>Order Id</th>
+                        <th>Client</th>
+                        <th>Date</th>
                     </tr>
                     <c:forEach items="${ordersListDate}" var="orders">
                         <tr>
@@ -85,14 +85,14 @@
     <div class="col-xs-12 col-sm-6 col-md-6">
         <div class="panel panel-default">
             <div class="panel-heading">
-                Заказы за 4 недели
+                Orders For Two Weeks.
             </div>
             <div class="panel-body privatetable">
                 <table class="table">
                     <tr>
-                        <th>Id Заказа</th>
-                        <th>Клиент</th>
-                        <th>Дата</th>
+                        <th>Order Id</th>
+                        <th>Client</th>
+                        <th>Date</th>
                     </tr>
                     <c:forEach items="${ordersListDateMonth}" var="orders">
                         <tr>

@@ -90,7 +90,92 @@ public class CatalogController {
         modelAndView.addObject("FilterCollections", productService.getCollections());
         modelAndView.addObject("FilterProducts", productService.getProducts());
         modelAndView.addObject("FilterColors", productService.getColors());
+        return modelAndView;
+    }
 
+    @RequestMapping(value = "/filter", method = RequestMethod.POST)
+    public ModelAndView doFilter(@RequestParam(value = "brand", required = false) String brand,
+                                 @RequestParam(value = "col", required = false) String collection,
+                                 @RequestParam(value = "price", required = false) String price,
+                                 @RequestParam(value = "weight", required = false) String weight,
+                                 @RequestParam(value = "length", required = false) String length,
+                                 @RequestParam(value = "width", required = false) String width,
+                                 @RequestParam(value = "color", required = false) String color) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("filter");
+        modelAndView.addObject("FilterBrands", productService.getBrands());
+        modelAndView.addObject("FilterCollections", productService.getCollections());
+        modelAndView.addObject("FilterColors", productService.getColors());
+
+        if (!brand.equals("")) {
+            brand = "'" + brand + "'";
+        } else {
+            brand = null;
+        }
+
+        if (!collection.equals("")) {
+            collection = "'" + collection + "'";
+        } else {
+            collection = null;
+        }
+        if (!price.equals("")) {
+            if (price.equals("1")) {
+                price = "0 AND 500";
+            } else if (price.equals("2")) {
+                price = "500 AND 1500";
+            } else if (price.equals("3")) {
+                price = "1500 AND 100000";
+            } else price = null;
+        } else {
+            price = null;
+        }
+
+        if (!weight.equals("")) {
+            if (weight.equals("1")) {
+                weight = "0 AND 5";
+            } else if ((weight.equals("2"))) {
+                weight = "5 AND 10";
+            } else if ((weight.equals("3"))) {
+                weight = "10 AND 15";
+            } else if ((weight.equals("4"))) {
+                weight = "15 AND 100";
+            } else weight = null;
+        } else {
+            weight = null;
+        }
+
+        if (!length.equals("")) {
+            if (length.equals("1")) {
+                length = "0 AND 20";
+            } else if (length.equals("2")) {
+                length = "20 AND 30";
+            } else if (length.equals("3")) {
+                length = "30 AND 40";
+            } else if (length.equals("4")) {
+                length = "40 AND 200";
+            } else length = null;
+        } else {
+            length = null;
+        }
+        if (!color.equals("")) {
+            color = "'" + color + "'";
+        } else {
+            color = null;
+        }
+        if (!width.equals("")) {
+            if (width.equals("1")) {
+                width = "0 AND 10";
+            } else if (width.equals("2")) {
+                width = "10 AND 20";
+            } else if (width.equals("3")) {
+                width = "20 AND 30";
+            } else if (width.equals("4")) {
+                width = "30 AND 100";
+            } else width = null;
+        } else {
+            width = null;
+        }
+        modelAndView.addObject("FilterProducts", productService.getFilteredProducts(brand, collection, price, weight, length, width, color));
         return modelAndView;
     }
 }

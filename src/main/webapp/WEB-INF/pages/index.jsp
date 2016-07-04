@@ -20,31 +20,34 @@
 <div class="container"> <!-- название страницы-->
     <hr>
     <div class="row">
-        <h1 align="center">Добро пожаловать в магазин замечательных котиков!</h1>
+        <h1 align="center">Welcome!</h1>
     </div>
     <hr>
 </div>
 <!-- название страницы-->
 <div class="container"> <!-- текст страницы-->
     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-        <p>
-            Сделавших много добра на банковском счету или ошибку честно, благородно вести себя. Проект, чтобы оплачивать
-            счета, вернуть деньги инвесторам. Умер там, неужели его жизнь. Из своего успеха секрет часто становятся
-            неотъемлемой частью жизни. Безукоризненными резюме всегда делаем то, что наша. Что-то особенное в этой
-            стране, а если вы изменить жизнь. Держать своё слово, работать честно благородно. Сотрудников, и пойдёте
-            дальше, люди чаще помнят плохое, и заслуживающих доверия бизнесменов. Семь лет в наших силах уменьшить.
-            Другой – даёт повод честным журналистам освещать как хорошие, так и сплетнями. Совершать ошибки на тех, кто
-            прослыл. Жизни в первую очередь, вы заработали много денег понимают, что учиться искусству.
+        <p align="justify">
+            Poop on grasses steal the warm chair right after you get up so sit in window and stare ooo, a bird!
+            yum or ignore the squirrels, you'll never catch them anyway but climb a tree,
+            wait for a fireman jump to fireman then scratch his face sit on the laptop or claw drapes.
+            The dog smells bad. Knock dish off table head butt cant eat out of my own dish eat from dog's
+            food scream at teh bath but chase ball of string flop over. Give attitude.
+            Howl uncontrollably for no reason climb leg.
+            Roll on the floor purring your whiskers off all of a sudden cat goes crazy,
+            sit on human sleep nap hunt by meowing loudly at 5am next to human slave food dispenser peer out window,
+            chatter at birds, lure them to mouth hunt anything that moves.
         </p>
     </div>
-    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12"><p>
-        Создания собственного бизнеса талантливых и конечно же, ни одной стороны. Бизнесменов, на своём пути наверное.
-        Упрёки, которые прожили богатую жизнь. Бизнесменов, на банковском счету или с одной. Запомнят не потому, что это
-        укрепляет. Наладить связи с миллиардами долларов на банковском счету. Людям шанс подняться по карьерной
-        лестнице. Живыми, а если нашей открытости. Которые, например, находили время. Страдала их прошлых ошибок, от
-        чего страдала. Заслуживающих доверия бизнесменов, на которых лежала печать их прошлых. Инвесторам и не научитесь
-        или с опущенной головой миллиардами. Большинство людей к мудрости людей. Вести себя по отношению к конкурентам,
-        но если.
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12"><p align="justify">
+        Eat prawns daintily with a claw then lick paws clean wash down prawns with a lap of carnation milk
+        then retire to the warmest spot on the couch to claw at the fabric before taking a catnap attack feet,
+        and scratch the box human is washing you why halp oh the horror flee scratch hiss bite.
+        Claw drapes chase after silly colored fish toys around the house.
+        Stare at ceiling chew foot please stop looking at your phone and pet me for intently stare at the same spot.
+        Under the bed eat prawns daintily with a claw then lick paws clean wash down prawns with a lap of carnation milk
+        then retire to the warmest spot on the couch to claw at the fabric before taking a catnap.
+        Leave fur on owners clothes. Hide head under blanket so no one can see chase dog.
     </p>
     </div>
 </div>

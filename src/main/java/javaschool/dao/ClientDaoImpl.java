@@ -69,7 +69,7 @@ public class ClientDaoImpl extends GenericDaoImpl<Client, Long> implements Clien
         try {
             TypedQuery<Orders> namedQuery = entityManager.createNamedQuery("Client.getOrders", Orders.class);
             namedQuery.setParameter("client", client);
-            return new HashSet<Orders>(namedQuery.getResultList());
+            return new LinkedHashSet<Orders>(namedQuery.getResultList());
         } catch (Exception e) {
             System.out.println("ClientDaoImpl.getOrders error:" + e.getMessage());
             return null;

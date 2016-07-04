@@ -29,4 +29,9 @@ public class OrderProductServiceImpl extends GenericServiceImpl<OrderProduct, Lo
     public List<OrderProduct> getOrderProducts() {
         return orderProductDao.getOrderProducts();
     }
+
+    public OrderProduct addByOrderProduct(OrderProduct orderProduct) {
+        return orderProductDao.add(orderProduct);
+    }
+
 }

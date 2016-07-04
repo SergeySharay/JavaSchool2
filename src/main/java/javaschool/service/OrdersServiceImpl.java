@@ -37,4 +37,8 @@ public class OrdersServiceImpl extends GenericServiceImpl<Orders, Long> implemen
     public void updateByOrder(Orders orders) {
         ordersDao.update(orders);
     }
+
+    public Orders addByOrder(Orders orders) {
+        return ordersDao.add(orders);
+    }
 }

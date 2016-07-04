@@ -75,8 +75,9 @@
                         </tr>
                     </table>
 
-                    <form method="post" action="#" class="privatetable feat">
+                    <form method="post" action="/site/cabinetorders" class="privatetable feat">
                         <input type="submit" class="btn btn-primary" value="Повторить заказ">
+                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                         <input type="hidden" name="orderId" value="<c:out value="${orders.id}"/>">
                     </form>
 

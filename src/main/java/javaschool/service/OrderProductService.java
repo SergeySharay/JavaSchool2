@@ -10,4 +10,6 @@ public interface OrderProductService extends GenericService<OrderProduct, Long> 
     List<OrderProduct> getOrderProduct(Orders order);
 
     List<OrderProduct> getOrderProducts();
+
+    OrderProduct addByOrderProduct(OrderProduct orderProduct);
 }

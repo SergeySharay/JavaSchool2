@@ -22,7 +22,7 @@ import java.text.SimpleDateFormat;
 public class CabinetController {
 
     DateFormat format = new SimpleDateFormat("dd.MM.yyyy");
-    DateFormat getFormat = new SimpleDateFormat("yyyy.MM.dd");
+    DateFormat getFormat = new SimpleDateFormat("yyyy-MM-dd");
 
     @Autowired
     @Qualifier(value = "ClientService")
@@ -91,7 +91,7 @@ public class CabinetController {
             }
             if (!date.equals("")) {
                 try {
-                    client.setBirthday(format.parse(date));
+                    client.setBirthday(getFormat.parse(date));
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
@@ -167,6 +167,8 @@ public class CabinetController {
         String email = user.getUsername();
         Client client = clientService.getClient(email);
         modelAndView.addObject("OrdersSet", clientService.getOrders(client));
+        modelAndView.addObject("format", format);
         return modelAndView;
     }
+
 }
