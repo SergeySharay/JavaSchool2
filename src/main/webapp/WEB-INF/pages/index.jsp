@@ -3,29 +3,26 @@
 <html lang="ru">
 <head>
     <%@ include file="/WEB-INF/jsp/header.jsp" %>
+    <title>Cats</title>
 </head>
 <body>
 <%@ include file="/WEB-INF/jsp/navbar.jsp" %>
-<div class="container"> <!-- левое меню +слайдер -->
-    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12" id="left_menu"><!-- левое меню -->
-        <%@ include file="/WEB-INF/jsp/menu_left.jsp" %><!-- левое меню -->
+<div class="container">
+    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12" id="left_menu">
+        <%@ include file="/WEB-INF/jsp/menu_left.jsp" %>
     </div>
-    <!-- левое меню -->
-    <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12"> <!-- слайдер -->
+    <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
         <%@ include file="/WEB-INF/jsp/menu_slider.jsp" %>
     </div>
-    <!-- слайдер -->
 </div>
-<!-- левое меню +слайдер -->
-<div class="container"> <!-- название страницы-->
+<div class="container">
     <hr>
     <div class="row">
         <h1 align="center">Welcome!</h1>
     </div>
     <hr>
 </div>
-<!-- название страницы-->
-<div class="container"> <!-- текст страницы-->
+<div class="container">
     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
         <p align="justify">
             Poop on grasses steal the warm chair right after you get up so sit in window and stare ooo, a bird!
@@ -51,16 +48,11 @@
     </p>
     </div>
 </div>
-<!-- текст страницы-->
-<div class="container"><!--footer-->
+<div class="container">
     <%@ include file="/WEB-INF/jsp/footer.jsp" %>
 </div>
-<!--footer-->
-
-
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-
 <script src="resources/js/bootstrap.js"></script>
 <script>
     $(function () {

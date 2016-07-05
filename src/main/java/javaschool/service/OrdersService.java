@@ -17,4 +17,6 @@ public interface OrdersService extends GenericService<Orders, Long> {
     void updateByOrder(Orders orders);
 
     Orders addByOrder(Orders orders);
+
+    List<Orders> getPageOrders(int pageNumber, int pageSize);
 }

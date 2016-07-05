@@ -11,7 +11,7 @@ import java.util.Set;
 @NamedQueries({
         @NamedQuery(name = "Orders.getOrders", query = "SELECT O from Orders O"),
         @NamedQuery(name = "Orders.getClientOrders", query = "SELECT O.id from Orders O where client=:client"),
-        @NamedQuery(name = "Orders.getBucket", query = "SELECT O.id from OrderProduct O where orderId=:orderId"),
+        @NamedQuery(name = "Orders.getBucket", query = "SELECT O.id from OrderProduct O where orderId=:orderId")
 })
 
 public class Orders implements Serializable {

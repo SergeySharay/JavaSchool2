@@ -3,7 +3,7 @@
 <html lang="ru">
 <head>
     <%@ include file="/WEB-INF/jsp/header.jsp" %>
-    <title>Каталог</title>
+    <title>Catalog</title>
 </head>
 <body>
 <%@ include file="/WEB-INF/jsp/navbar.jsp" %>

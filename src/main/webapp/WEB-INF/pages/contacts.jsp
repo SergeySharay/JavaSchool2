@@ -2,7 +2,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <%@ include file="/WEB-INF/jsp/header.jsp" %><!-- header -->
+    <%@ include file="/WEB-INF/jsp/header.jsp" %>
+    <title>Cats</title>
 </head>
 <body>
 <%@ include file="/WEB-INF/jsp/navbar.jsp" %>

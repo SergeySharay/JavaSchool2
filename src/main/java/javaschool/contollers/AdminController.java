@@ -1,5 +1,6 @@
 package javaschool.contollers;
 
+import javaschool.entities.Client;
 import javaschool.entities.Orders;
 import javaschool.entities.Product;
 import javaschool.service.ClientService;
@@ -16,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.List;
 
 @Controller
 public class AdminController {
@@ -39,8 +41,6 @@ public class AdminController {
     private StatisticService statisticService;
 
 
-
-
     @RequestMapping(value = "/admin", method = RequestMethod.GET)
     public ModelAndView admin() {
         ModelAndView modelAndView = new ModelAndView();
@@ -49,37 +49,75 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/adminclients", method = RequestMethod.GET)
-    public ModelAndView clients() {
+    public ModelAndView clients(@RequestParam(value = "pageNumber", required = false) Integer pageNumber) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("adminclients");
-        modelAndView.addObject("clientList", clientService.getClients());
-        modelAndView.addObject("format", format);
-        return modelAndView;
-    }
+        int pageSize = 10;
 
-    @RequestMapping(value = "/adminclients", method = RequestMethod.POST)
-    public ModelAndView clientsChange() {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("adminclients");
-        modelAndView.addObject("clientList", clientService.getClients());
+        if (pageNumber == null) {
+            pageNumber = 1;
+        }
+        int begin = Math.max(1, pageNumber - 5);
+
+        List<Client> clientList = clientService.getPageClients(pageNumber, pageSize);
+        int pages = (clientService.getClients().size() + pageSize - 1) / pageSize;
+        int end = Math.min(begin + 10, pages);
+
+        modelAndView.addObject("pageNumber", pageNumber);
+        modelAndView.addObject("beginIndex", begin);
+        modelAndView.addObject("endIndex", end);
+        modelAndView.addObject("pages", pages);
+        modelAndView.addObject("clientList", clientList);
         modelAndView.addObject("format", format);
         return modelAndView;
     }
 
     @RequestMapping(value = "/adminorders", method = RequestMethod.GET)
-    public ModelAndView orders() {
+    public ModelAndView orders(@RequestParam(value = "pageNumber", required = false) Integer pageNumber) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("adminorders");
-        modelAndView.addObject("ordersList", ordersService.getOrders());
+
+        int pageSize = 10;
+
+        if (pageNumber == null) {
+            pageNumber = 1;
+        }
+        int begin = Math.max(1, pageNumber - 5);
+        List<Orders> ordersList = ordersService.getPageOrders(pageNumber, pageSize);
+        int pages = (ordersService.getOrders().size() + pageSize - 1) / pageSize;
+        int end = Math.min(begin + 10, pages);
+        modelAndView.addObject("pageNumber", pageNumber);
+        modelAndView.addObject("beginIndex", begin);
+        modelAndView.addObject("endIndex", end);
+        modelAndView.addObject("pages", pages);
+
+        modelAndView.addObject("ordersList", ordersList);
+
         modelAndView.addObject("format", format);
         return modelAndView;
     }
 
     @RequestMapping(value = "/adminproducts", method = RequestMethod.GET)
-    public ModelAndView products() {
+    public ModelAndView products(@RequestParam(value = "pageNumber", required = false) Integer pageNumber) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("adminproducts");
-        modelAndView.addObject("productList", productService.getProducts());
+
+        int pageSize = 10;
+
+        if (pageNumber == null) {
+            pageNumber = 1;
+        }
+        int begin = Math.max(1, pageNumber - 5);
+        List<Product> productList = productService.getPageProducts(pageNumber, pageSize);
+        int pages = (productService.getProducts().size() + pageSize - 1) / pageSize;
+        int end = Math.min(begin + 10, pages);
+
+        modelAndView.addObject("pageNumber", pageNumber);
+        modelAndView.addObject("beginIndex", begin);
+        modelAndView.addObject("endIndex", end);
+        modelAndView.addObject("pages", pages);
+
+        modelAndView.addObject("productList", productList);
         modelAndView.addObject("format", format);
         return modelAndView;
     }

@@ -61,4 +61,8 @@ public class ProductServiceImpl extends GenericServiceImpl<Product, Long> implem
     public Product addNewProduct(Product product) {
         return productDao.add(product);
     }
+
+    public List<Product> getPageProducts(int pageNumber, int pageSize) {
+        return productDao.getPageProducts(pageNumber, pageSize);
+    }
 }

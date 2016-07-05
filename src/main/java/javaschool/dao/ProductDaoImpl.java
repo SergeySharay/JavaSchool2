@@ -148,4 +148,12 @@ public class ProductDaoImpl extends GenericDaoImpl<Product, Long> implements Pro
             return null;
         }
     }
+
+    @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
+    public List<Product> getPageProducts(int pageNumber, int pageSize) {
+        TypedQuery<Product> namedQuery = entityManager.createNamedQuery("Product.getProducts", Product.class);
+        namedQuery.setFirstResult((pageNumber - 1) * pageSize);
+        namedQuery.setMaxResults(pageSize);
+        return namedQuery.getResultList();
+    }
 }

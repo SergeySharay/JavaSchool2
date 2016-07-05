@@ -3,6 +3,7 @@
 <html lang="ru">
 <head>
     <%@ include file="/WEB-INF/jsp/header.jsp" %>
+    <title>Cats</title>
 </head>
 <body>
 <%@ include file="/WEB-INF/jsp/navbar.jsp" %>

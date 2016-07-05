@@ -6,6 +6,7 @@
 <html>
 <head>
     <%@ include file="/WEB-INF/jsp/header.jsp" %>
+    <title>Cats</title>
 </head>
 
 <body>

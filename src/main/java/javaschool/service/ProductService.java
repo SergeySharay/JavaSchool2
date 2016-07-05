@@ -28,4 +28,6 @@ public interface ProductService extends GenericService<Product, Long> {
     Product findById(Long id);
 
     Product addNewProduct(Product product);
+
+    List<Product> getPageProducts(int pageNumber, int pageSize);
 }

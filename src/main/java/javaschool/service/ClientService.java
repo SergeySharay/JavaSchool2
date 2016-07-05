@@ -20,5 +20,7 @@ public interface ClientService extends GenericService<Client, Long> {
     public void updateByClient(Client client);
 
     Client addByClient(Client client);
+
+    List<Client> getPageClients(int pageNumber, int pageSize);
 }
 

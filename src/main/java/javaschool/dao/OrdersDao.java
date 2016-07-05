@@ -19,5 +19,6 @@ public interface OrdersDao extends GenericDao<Orders, Long> {
 
     List<Long> getClientOrders(Client client);
 
+    List<Orders> getPageOrders(int pageNumber, int pageSize);
 
 }

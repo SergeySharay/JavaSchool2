@@ -59,5 +59,11 @@ public class OrdersDaoImpl extends GenericDaoImpl<Orders, Long> implements Order
         }
     }
 
-
+    @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
+    public List<Orders> getPageOrders(int pageNumber, int pageSize) {
+        TypedQuery<Orders> namedQuery = entityManager.createNamedQuery("Orders.getOrders", Orders.class);
+        namedQuery.setFirstResult((pageNumber - 1) * pageSize);
+        namedQuery.setMaxResults(pageSize);
+        return namedQuery.getResultList();
+    }
 }

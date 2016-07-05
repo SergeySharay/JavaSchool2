@@ -75,4 +75,11 @@ public class ClientDaoImpl extends GenericDaoImpl<Client, Long> implements Clien
             return null;
         }
     }
+
+    public List<Client> getPageClients(int pageNumber, int pageSize) {
+        TypedQuery<Client> namedQuery = entityManager.createNamedQuery("Client.getClients", Client.class);
+        namedQuery.setFirstResult((pageNumber - 1) * pageSize);
+        namedQuery.setMaxResults(pageSize);
+        return namedQuery.getResultList();
+    }
 }

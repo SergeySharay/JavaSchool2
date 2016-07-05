@@ -41,4 +41,8 @@ public class OrdersServiceImpl extends GenericServiceImpl<Orders, Long> implemen
     public Orders addByOrder(Orders orders) {
         return ordersDao.add(orders);
     }
+
+    public List<Orders> getPageOrders(int pageNumber, int pageSize) {
+        return ordersDao.getPageOrders(pageNumber, pageSize);
+    }
 }

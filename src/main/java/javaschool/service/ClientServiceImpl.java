@@ -15,7 +15,6 @@ import java.util.Set;
 @Service("ClientService")
 @Transactional
 public class ClientServiceImpl extends GenericServiceImpl<Client, Long> implements ClientService {
-
     private ClientDao clientDao;
 
     @Autowired
@@ -47,5 +46,10 @@ public class ClientServiceImpl extends GenericServiceImpl<Client, Long> implemen
     public Client addByClient(Client client) {
         return clientDao.add(client);
     }
+
+    public List<Client> getPageClients(int pageNumber, int pageSize) {
+        return clientDao.getPageClients(pageNumber, pageSize);
+    }
+
 
 }

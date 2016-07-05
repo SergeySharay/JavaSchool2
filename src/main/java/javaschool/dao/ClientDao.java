@@ -21,4 +21,7 @@ public interface ClientDao extends GenericDao<Client, Long> {
 
     Set<Orders> getOrders(final Client client);
 
+    List<Client> getPageClients(int pageNumber, int pageSize);
+
+
 }

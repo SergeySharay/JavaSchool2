@@ -23,4 +23,6 @@ public interface ProductDao extends GenericDao<Product, Long> {
                                      String color);
 
     Set<String> getColors();
+
+    List<Product> getPageProducts(int pageNumber, int pageSize);
 }

@@ -3,7 +3,7 @@
 <html>
 <head>
     <%@ include file="/WEB-INF/jsp/header.jsp" %>
-    <title>Checkout</title>
+    <title>Cabinet</title>
 </head>
 <body>
 <%@ include file="/WEB-INF/jsp/navbar.jsp" %>
