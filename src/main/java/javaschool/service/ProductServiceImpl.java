@@ -1,7 +1,7 @@
 package javaschool.service;
 
-import javaschool.dao.ProductDao;
 import javaschool.entities.Product;
+import javaschool.selenium.ProductDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;

@@ -1,8 +1,8 @@
 package javaschool.service;
 
-import javaschool.dao.OrdersDao;
 import javaschool.entities.Client;
 import javaschool.entities.Orders;
+import javaschool.selenium.OrdersDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;

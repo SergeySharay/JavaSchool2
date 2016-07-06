@@ -1,6 +1,6 @@
 package javaschool.service;
 
-import javaschool.dao.GenericDao;
+import javaschool.selenium.GenericDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;

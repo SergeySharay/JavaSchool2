@@ -22,7 +22,7 @@
                     </c:if>
                 </div>
                 <div class="panel-body">
-                    <form role="form" method="POST" action="/site/login">
+                    <form role="form" method="POST" action="/site/login" id="login-form">
                         <div class="form-group">
                             <input type="email" name="username" id="email" class="form-control input-sm"
                                    placeholder="Email" required>
@@ -32,7 +32,7 @@
                                    placeholder="Password" required>
                         </div>
                         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                        <input type="submit" value="Login" class="btn btn-info btn-block">
+                        <input type="submit" id="submit" value="Login" class="btn btn-info btn-block">
                     </form>
                 </div>
             </div>

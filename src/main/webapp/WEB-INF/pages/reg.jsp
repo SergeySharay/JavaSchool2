@@ -58,7 +58,7 @@
                             </div>
                         </div>
                         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                        <input type="submit" value="Sing Up" class="btn btn-info btn-block">
+                        <input type="submit" id="submit" value="Sing Up" class="btn btn-info btn-block">
                     </form>
                 </div>
             </div>

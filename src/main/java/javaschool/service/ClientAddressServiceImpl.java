@@ -1,8 +1,8 @@
 package javaschool.service;
 
-import javaschool.dao.ClientAddressDao;
 import javaschool.entities.Client;
 import javaschool.entities.ClientAddress;
+import javaschool.selenium.ClientAddressDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;

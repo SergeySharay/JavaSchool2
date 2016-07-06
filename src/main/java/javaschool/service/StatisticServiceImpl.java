@@ -1,12 +1,12 @@
 package javaschool.service;
 
-import javaschool.dao.ClientDao;
-import javaschool.dao.OrderProductDao;
-import javaschool.dao.OrdersDao;
 import javaschool.entities.Client;
 import javaschool.entities.OrderProduct;
 import javaschool.entities.Orders;
 import javaschool.entities.Product;
+import javaschool.selenium.ClientDao;
+import javaschool.selenium.OrderProductDao;
+import javaschool.selenium.OrdersDao;
 import org.apache.commons.lang3.time.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

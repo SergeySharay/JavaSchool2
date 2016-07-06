@@ -3,6 +3,7 @@ package javaschool.contollers;
 import com.google.common.base.Strings;
 import javaschool.entities.Product;
 import javaschool.service.ProductService;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -15,8 +16,7 @@ import java.util.Map;
 @Controller
 @SessionAttributes(value = "Cart")
 public class CatalogController {
-
-
+    private static final Logger logger = Logger.getLogger(CatalogController.class);
     private ProductService productService;
 
     @Autowired
@@ -29,12 +29,17 @@ public class CatalogController {
     public ModelAndView catalog(@RequestParam(value = "Brands", required = false) String brand) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("catalog");
+        logger.info("modelAndView.setViewName(\"catalog\")");
         modelAndView.addObject("catalogMenuBrandList", productService.getBrands());
+        logger.info("modelAndView.addObject(\"catalogMenuBrandList\", productService.getBrands())");
         if (Strings.isNullOrEmpty(brand)) {
             modelAndView.addObject("catalogCollectionList", productService.getCollections());
+            logger.info("modelAndView.addObject(\"catalogCollectionList\", productService.getCollections())");
         } else {
             modelAndView.addObject("catalogCollectionList", productService.getCollections(brand));
+            logger.info("modelAndView.addObject(\"catalogCollectionList\", productService.getCollections(brand))");
             modelAndView.addObject("catalogBrand", brand);
+            logger.info("modelAndView.addObject(\"catalogBrand\", brand);");
         }
         return modelAndView;
     }

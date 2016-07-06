@@ -11,6 +11,7 @@
 
     <http auto-config="true" use-expressions="true">
         <intercept-url pattern="/admin**" access="hasRole('ROLE_ADMIN')"/>
+        <intercept-url pattern="/api**" access="hasRole('ROLE_ADMIN')"/>
         <intercept-url pattern="/cabinet**" access="hasRole('ROLE_USER')"/>
         <form-login
                 login-page="/login"

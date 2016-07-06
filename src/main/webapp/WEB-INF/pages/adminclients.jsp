@@ -13,7 +13,7 @@
 <c:url var="lastUrl" value="/adminclients?pageNumber=${pages}"/>
 <c:url var="prevUrl" value="/adminclients?pageNumber=${pageNumber - 1}"/>
 <c:url var="nextUrl" value="/adminclients?pageNumber=${pageNumber + 1}"/>
-<div class="container">
+<div class="container" id="adminclients">
     <div class="panel panel-default" id="order">
         <div class="panel-heading">
             Clients
