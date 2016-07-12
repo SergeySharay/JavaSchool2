@@ -1,26 +1,27 @@
 package javaschool.service;
 
+import javaschool.dao.OrderProductDao;
+import javaschool.dao.OrdersDao;
 import javaschool.entities.Client;
 import javaschool.entities.OrderProduct;
 import javaschool.entities.Orders;
 import javaschool.entities.Product;
-import javaschool.selenium.ClientDao;
-import javaschool.selenium.OrderProductDao;
-import javaschool.selenium.OrdersDao;
 import org.apache.commons.lang3.time.DateUtils;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.sql.SQLException;
 import java.util.*;
 
 @Service("StatisticService")
 @Transactional
 public class StatisticServiceImpl implements StatisticService {
+    private static final org.apache.log4j.Logger logger = Logger.getLogger(StatisticServiceImpl.class);
 
     private OrderProductDao orderProductDao;
-    private ClientDao clientDao;
     private OrdersDao ordersDao;
 
     @Autowired
@@ -36,7 +37,13 @@ public class StatisticServiceImpl implements StatisticService {
     }
 
     public Map<Product, Long> findTopTenProducts() {
-        List<OrderProduct> orderProductList = orderProductDao.getOrderProducts();
+        List<OrderProduct> orderProductList = null;
+        try {
+            orderProductList = orderProductDao.getOrderProducts();
+        } catch (SQLException e) {
+            logger.error("Exception occurred during StatisticService.findTopTenProducts() call");
+            return null;
+        }
         Map<Product, Long> productLongMap = new LinkedHashMap<Product, Long>();
 
         for (OrderProduct orderProduct : orderProductList) {
@@ -79,7 +86,13 @@ public class StatisticServiceImpl implements StatisticService {
     }
 
     public Map<Client, Long> findTopTenClients() {
-        List<Orders> ordersList = ordersDao.getOrders();
+        List<Orders> ordersList = null;
+        try {
+            ordersList = ordersDao.getOrders();
+        } catch (SQLException e) {
+            logger.error("Exception occurred during StatisticService.findTopTenClients() call");
+            return null;
+        }
         Map<Client, Long> ordersLongMap = new LinkedHashMap<Client, Long>();
 
         for (Orders orders : ordersList) {
@@ -95,7 +108,13 @@ public class StatisticServiceImpl implements StatisticService {
     }
 
     public List<Orders> ordersForAWeeks(Integer weeks) {
-        List<Orders> ordersList = ordersDao.getOrders();
+        List<Orders> ordersList = null;
+        try {
+            ordersList = ordersDao.getOrders();
+        } catch (SQLException e) {
+            logger.error("Exception occurred during StatisticService.ordersForAWeeks() call");
+            return null;
+        }
         List<Orders> ordersListDate = new LinkedList<Orders>();
         for (Orders orders : ordersList) {
             if (orders.getOrderDate().compareTo(DateUtils.addWeeks(new Date(), -weeks)) > 0) {

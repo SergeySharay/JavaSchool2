@@ -4,7 +4,7 @@
  * @author Sergey Sharay
  * @version 1.0
  */
-package javaschool.selenium;
+package javaschool.dao;
 
 import javaschool.entities.OrderProduct;
 import javaschool.entities.Orders;
@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.TypedQuery;
+import java.sql.SQLException;
 import java.util.List;
 
 @Repository("OrderProductDao")
@@ -22,25 +23,23 @@ public class OrderProductDaoImpl extends GenericDaoImpl<OrderProduct, Long> impl
     }
 
     @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
-    public List<OrderProduct> getOrderProduct(final Orders order) {
+    public List<OrderProduct> getOrderProduct(final Orders order) throws SQLException {
         try {
             TypedQuery<OrderProduct> namedQuery = entityManager.createNamedQuery("OrderProduct.getOrderProducts", OrderProduct.class);
             namedQuery.setParameter("order", order);
             return namedQuery.getResultList();
-        } catch (Exception e) {
-            System.out.println("OrdersDaoImpl.getOrderProduct error:" + e.getMessage());
-            return null;
+        } catch (Exception ex) {
+            throw new SQLException("Exception occurred in OrderProductDao.getOrderProduct()", ex);
         }
     }
 
     @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
-    public List<OrderProduct> getOrderProducts() {
+    public List<OrderProduct> getOrderProducts() throws SQLException {
         try {
             TypedQuery<OrderProduct> namedQuery = entityManager.createNamedQuery("OrderProduct.getAllOrderProduct", OrderProduct.class);
             return namedQuery.getResultList();
-        } catch (Exception e) {
-            System.out.println("OrdersDaoImpl.getOrderProducts error:" + e.getMessage());
-            return null;
+        } catch (Exception ex) {
+            throw new SQLException("Exception occurred in OrderProductDao.getOrderProducts()", ex);
         }
     }
 }

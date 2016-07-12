@@ -1,6 +1,7 @@
 package javaschool.service;
 
 import javaschool.entities.Product;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.Set;
@@ -30,4 +31,6 @@ public interface ProductService extends GenericService<Product, Long> {
     Product addNewProduct(Product product);
 
     List<Product> getPageProducts(int pageNumber, int pageSize);
+
+    Void addProducts(MultipartFile file);
 }

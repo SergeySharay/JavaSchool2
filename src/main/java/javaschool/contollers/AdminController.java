@@ -7,6 +7,7 @@ import javaschool.service.ClientService;
 import javaschool.service.OrdersService;
 import javaschool.service.ProductService;
 import javaschool.service.StatisticService;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -21,6 +22,7 @@ import java.util.List;
 
 @Controller
 public class AdminController {
+    private static final Logger logger = Logger.getLogger(AdminController.class);
 
     DateFormat format = new SimpleDateFormat("dd.MM.yyyy");
 

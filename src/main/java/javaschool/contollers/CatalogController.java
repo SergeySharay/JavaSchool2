@@ -29,17 +29,12 @@ public class CatalogController {
     public ModelAndView catalog(@RequestParam(value = "Brands", required = false) String brand) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("catalog");
-        logger.info("modelAndView.setViewName(\"catalog\")");
         modelAndView.addObject("catalogMenuBrandList", productService.getBrands());
-        logger.info("modelAndView.addObject(\"catalogMenuBrandList\", productService.getBrands())");
         if (Strings.isNullOrEmpty(brand)) {
             modelAndView.addObject("catalogCollectionList", productService.getCollections());
-            logger.info("modelAndView.addObject(\"catalogCollectionList\", productService.getCollections())");
         } else {
             modelAndView.addObject("catalogCollectionList", productService.getCollections(brand));
-            logger.info("modelAndView.addObject(\"catalogCollectionList\", productService.getCollections(brand))");
             modelAndView.addObject("catalogBrand", brand);
-            logger.info("modelAndView.addObject(\"catalogBrand\", brand);");
         }
         return modelAndView;
     }

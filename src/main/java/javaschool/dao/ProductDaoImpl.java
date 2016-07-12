@@ -4,7 +4,7 @@
  * @author Sergey Sharay
  * @version 1.0
  */
-package javaschool.selenium;
+package javaschool.dao;
 
 import com.google.common.base.Strings;
 import javaschool.entities.Product;
@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -27,79 +28,73 @@ public class ProductDaoImpl extends GenericDaoImpl<Product, Long> implements Pro
     }
 
     @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
-    public List<Product> getProducts() {
+    public List<Product> getProducts() throws SQLException {
         try {
             TypedQuery<Product> namedQuery = entityManager.createNamedQuery("Product.getProducts", Product.class);
             return namedQuery.getResultList();
-        } catch (Exception e) {
-            System.out.println("ProductDaoImpl.getProducts error:" + e.getMessage());
-            return null;
+        } catch (Exception ex) {
+            throw new SQLException("Exception occurred in ProductDao.getProducts()", ex);
         }
     }
 
     @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
-    public List<Product> getCollectionProducts(final String brand, final String collection) {
+    public List<Product> getCollectionProducts(final String brand, final String collection) throws SQLException {
         try {
             TypedQuery<Product> namedQuery = entityManager.createNamedQuery("Product.getProductsInCollection", Product.class);
             namedQuery.setParameter("collection", collection);
             namedQuery.setParameter("brand", brand);
             return namedQuery.getResultList();
-        } catch (Exception e) {
-            System.out.println("ProductDaoImpl.getProducts error:" + e.getMessage());
-            return null;
+        } catch (Exception ex) {
+            throw new SQLException("Exception occurred in ProductDao.getCollectionProducts()", ex);
         }
     }
 
     @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
-    public Set<String> getBrands() {
+    public Set<String> getBrands() throws SQLException {
         try {
             TypedQuery<String> namedQuery = entityManager.createNamedQuery("Product.getBrands", String.class);
             return new HashSet<String>(namedQuery.getResultList());
-        } catch (Exception e) {
-            System.out.println("ProductDaoImpl.getBrands error:" + e.getMessage());
-            return null;
+        } catch (Exception ex) {
+            throw new SQLException("Exception occurred in ProductDao.getBrands()", ex);
         }
     }
 
     @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
-    public String getBrand(String collection) {
+    public String getBrand(String collection) throws SQLException {
         try {
             TypedQuery<String> namedQuery = entityManager.createNamedQuery("Product.getBrand", String.class);
             namedQuery.setParameter("collection", collection);
             return namedQuery.getSingleResult();
-        } catch (Exception e) {
-            System.out.println("ProductDaoImpl.getBrand error:" + e.getMessage());
-            return null;
+        } catch (Exception ex) {
+            throw new SQLException("Exception occurred in ProductDao.getBrand()", ex);
         }
     }
 
     @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
-    public Set<String> getCollections() {
+    public Set<String> getCollections() throws SQLException {
         try {
             TypedQuery<String> namedQuery = entityManager.createNamedQuery("Product.getAllCollections", String.class);
             return new HashSet<String>(namedQuery.getResultList());
-        } catch (Exception e) {
-            System.out.println("ProductDaoImpl.getCollections error:" + e.getMessage());
-            return null;
+        } catch (Exception ex) {
+            throw new SQLException("Exception occurred in ProductDao.getCollections()", ex);
         }
     }
 
     @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
-    public Set<String> getCollections(final String brand) {
+    public Set<String> getCollections(final String brand) throws SQLException {
         try {
             TypedQuery<String> namedQuery = entityManager.createNamedQuery("Product.getCollections", String.class);
             namedQuery.setParameter("brand", brand);
             return new HashSet<String>(namedQuery.getResultList());
-        } catch (Exception e) {
-            System.out.println("ProductDaoImpl.getCollections error:" + e.getMessage());
-            return null;
+        } catch (Exception ex) {
+            throw new SQLException("Exception occurred in ProductDao.getCollections()", ex);
         }
     }
 
     @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
     public Set<Product> getFilteredProducts(String brand, String collection, String price,
                                             String weight, String length, String width,
-                                            String color) {
+                                            String color) throws SQLException {
         String query = "SELECT * FROM product";
         List<String> toBeAppended = new ArrayList<String>();
         toBeAppended.add(getSqlPart(brand, "product_brand = "));
@@ -124,9 +119,8 @@ public class ProductDaoImpl extends GenericDaoImpl<Product, Long> implements Pro
         try {
             Query nativeQuery = entityManager.createNativeQuery(query, Product.class);
             return new HashSet<Product>(nativeQuery.getResultList());
-        } catch (Exception e) {
-            System.out.println("ProductDaoImpl.getFilteredProducts error:" + e.getMessage());
-            return null;
+        } catch (Exception ex) {
+            throw new SQLException("Exception occurred in ProductDao.getFilteredProducts()", ex);
         }
     }
 
@@ -139,21 +133,24 @@ public class ProductDaoImpl extends GenericDaoImpl<Product, Long> implements Pro
     }
 
     @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
-    public Set<String> getColors() {
+    public Set<String> getColors() throws SQLException {
         try {
             TypedQuery<String> namedQuery = entityManager.createNamedQuery("Product.getColors", String.class);
             return new HashSet<String>(namedQuery.getResultList());
-        } catch (Exception e) {
-            System.out.println("ProductDaoImpl.getColors error:" + e.getMessage());
-            return null;
+        } catch (Exception ex) {
+            throw new SQLException("Exception occurred in ProductDao.getColors()", ex);
         }
     }
 
     @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
-    public List<Product> getPageProducts(int pageNumber, int pageSize) {
-        TypedQuery<Product> namedQuery = entityManager.createNamedQuery("Product.getProducts", Product.class);
-        namedQuery.setFirstResult((pageNumber - 1) * pageSize);
-        namedQuery.setMaxResults(pageSize);
-        return namedQuery.getResultList();
+    public List<Product> getPageProducts(int pageNumber, int pageSize) throws SQLException {
+        try {
+            TypedQuery<Product> namedQuery = entityManager.createNamedQuery("Product.getProducts", Product.class);
+            namedQuery.setFirstResult((pageNumber - 1) * pageSize);
+            namedQuery.setMaxResults(pageSize);
+            return namedQuery.getResultList();
+        } catch (Exception ex) {
+            throw new SQLException("Exception occurred in ProductDao.getPageProducts()", ex);
+        }
     }
 }

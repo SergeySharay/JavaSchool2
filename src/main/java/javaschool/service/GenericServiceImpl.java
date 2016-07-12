@@ -1,20 +1,21 @@
 package javaschool.service;
 
-import javaschool.selenium.GenericDao;
-import org.springframework.beans.factory.annotation.Autowired;
+import javaschool.dao.GenericDao;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
+import java.sql.SQLException;
 
 @Service("GenericService")
 public class GenericServiceImpl<T, PK extends Serializable> implements GenericService<T, PK> {
+    private static final org.apache.log4j.Logger logger = Logger.getLogger(GenericServiceImpl.class);
 
     private GenericDao<T, PK> genericDao;
 
-    @Autowired
     @Qualifier(value = "GenericDao")
     public void setGenericDao(GenericDao<T, PK> genericDao) {
         this.genericDao = genericDao;
@@ -22,21 +23,39 @@ public class GenericServiceImpl<T, PK extends Serializable> implements GenericSe
 
     @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
     public T add(T object) {
-        return genericDao.add(object);
+        try {
+            return genericDao.add(object);
+        } catch (SQLException e) {
+            logger.error("Exception occurred during GenericService.add() call");
+            return null;
+        }
     }
 
     @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
     public T get(PK id) {
-        return genericDao.get(id);
+        try {
+            return genericDao.get(id);
+        } catch (SQLException e) {
+            logger.error("Exception occurred during GenericService.get() call");
+            return null;
+        }
     }
 
     @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
     public void delete(PK id) {
-        genericDao.delete(id);
+        try {
+            genericDao.delete(id);
+        } catch (SQLException e) {
+            logger.error("Exception occurred during GenericService.delete() call");
+        }
     }
 
     @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
     public void update(T object) {
-        genericDao.update(object);
+        try {
+            genericDao.update(object);
+        } catch (SQLException e) {
+            logger.error("Exception occurred during GenericService.update() call");
+        }
     }
 }

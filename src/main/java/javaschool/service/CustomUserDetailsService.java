@@ -15,17 +15,10 @@ import java.util.Map;
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
 
-    //private UserManager userManager;
     private HashMap<String, User> users;
     @Autowired
     @Qualifier(value = "ClientService")
     private ClientService clientDao;
-
-  /*  @Autowired
-    @Qualifier(value = "UserManager")
-    public void setUserManager(UserManager userManager) {
-        this.userManager = userManager;
-    }*/
 
     @Transactional
     public UserDetails loadUserByUsername(String username)
@@ -33,7 +26,8 @@ public class CustomUserDetailsService implements UserDetailsService {
 
         users = new HashMap<String, User>();
 
-        Map<String, String> emailpass = clientDao.getClientEmailPassword();
+        Map<String, String> emailpass = null;
+        emailpass = clientDao.getClientEmailPassword();
         for (Map.Entry entry : emailpass.entrySet())
             users.put((String) entry.getKey(), new User((String) entry.getKey(), (String) entry.getValue(), "ROLE_USER"));
         users.put("pow@pow.pow", new User("pow@pow.pow", "pow", "ROLE_USER, ROLE_ADMIN"));

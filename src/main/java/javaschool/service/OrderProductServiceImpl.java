@@ -1,18 +1,21 @@
 package javaschool.service;
 
+import javaschool.dao.OrderProductDao;
 import javaschool.entities.OrderProduct;
 import javaschool.entities.Orders;
-import javaschool.selenium.OrderProductDao;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.sql.SQLException;
 import java.util.List;
 
 @Service("OrderProductService")
 @Transactional
 public class OrderProductServiceImpl extends GenericServiceImpl<OrderProduct, Long> implements OrderProductService {
+    private static final org.apache.log4j.Logger logger = Logger.getLogger(OrderProductServiceImpl.class);
 
     private OrderProductDao orderProductDao;
 
@@ -23,15 +26,30 @@ public class OrderProductServiceImpl extends GenericServiceImpl<OrderProduct, Lo
     }
 
     public List<OrderProduct> getOrderProduct(Orders order) {
-        return orderProductDao.getOrderProduct(order);
+        try {
+            return orderProductDao.getOrderProduct(order);
+        } catch (SQLException e) {
+            logger.error("Exception occurred during OrderProductService.getOrderProduct() call");
+            return null;
+        }
     }
 
     public List<OrderProduct> getOrderProducts() {
-        return orderProductDao.getOrderProducts();
+        try {
+            return orderProductDao.getOrderProducts();
+        } catch (SQLException e) {
+            logger.error("Exception occurred during OrderProductService.getOrderProducts() call");
+            return null;
+        }
     }
 
     public OrderProduct addByOrderProduct(OrderProduct orderProduct) {
-        return orderProductDao.add(orderProduct);
+        try {
+            return orderProductDao.add(orderProduct);
+        } catch (SQLException e) {
+            logger.error("Exception occurred during OrderProductService.addByOrderProduct() call");
+            return null;
+        }
     }
 
 }

@@ -55,10 +55,8 @@ public class LoginController {
         } else {
             Client client = new Client(email, firstName, lastName, password);
             Client clientFromDB = clientService.addByClient(client);
-
             ClientAddress clientAddress = new ClientAddress(clientFromDB);
             clientAddressService.addByClientAddress(clientAddress);
-
             modelAndView.setViewName("login");
             return modelAndView;
         }

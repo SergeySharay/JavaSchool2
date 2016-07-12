@@ -170,4 +170,14 @@ public class Product implements Serializable {
     public int hashCode() {
         return id.hashCode();
     }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", quantity=" + quantity +
+                ", price=" + price +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

@@ -51,9 +51,14 @@
 <div class="container">
     <div class="panel panel-default" id="order">
         <div class="panel-heading">
-            <div align="right">
+            <div>
                 <form role="form" method="get" action="/site/adminproductadd" class="btn">
                     <input type="submit" value="Add New Product" class="btn btn-info">
+                </form>
+                <button type="submit" form="addprod" class="btn btn-primary">Load Products</button>
+                <form role="form" id="addprod" method="post" action="/site/addproducts"
+                      class="btn" enctype="multipart/form-data">
+                    <input type="file" name="file">
                 </form>
             </div>
         </div>
