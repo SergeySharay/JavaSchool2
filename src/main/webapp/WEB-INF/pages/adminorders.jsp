@@ -53,7 +53,7 @@
         <div class="panel-heading">
             Orders
         </div>
-        <div class="panel-body">
+        <div class="panel-body clienttable">
             <table class="table">
                 <tr>
                     <th>Order Number</th>

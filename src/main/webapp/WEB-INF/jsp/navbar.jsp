@@ -17,8 +17,8 @@
                     <li><a href="/site/about">About Us</a></li>
                     <li><a href="/site/catalog">Catalog</a></li>
                     <li><a href="/site/contacts">Contacts</a></li>
-                    <li><a href="/site/delivery">Delivery</a></li>
-                    <li><a href="/site/pay">Payment</a></li>
+                    <li><a href="/site/bucket"><i class="glyphicon glyphicon-shopping-cart"></i> Cart</a></li>
+
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <sec:authorize access="!isAuthenticated()">
@@ -40,6 +40,6 @@
 </div>
 <div class="container">
     <div class="col-xs-12">
-        <div id="bucket"><a href="/site/bucket"><img src="resources/img/bucket.png"></a></div>
+        <div id="bucket" class="bucket"><a href="/site/bucket"><img src="resources/img/bucket.png"></a></div>
     </div>
 </div>

@@ -20,7 +20,7 @@ public class AddProductController {
     }
 
     @RequestMapping(value = "/addproducts", method = RequestMethod.POST)
-    public ModelAndView getFile(@RequestParam(value = "file", required = false) MultipartFile file) {
+    public ModelAndView getFile(@RequestParam(value = "file", required = false) final MultipartFile file) {
         ModelAndView modelAndView = new ModelAndView();
         productService.addProducts(file);
         modelAndView.setViewName("redirect:adminproducts");

@@ -18,7 +18,7 @@
         <div class="panel-heading">
             Clients
         </div>
-        <div class="panel-body">
+        <div class="panel-body clienttable">
             <table class="table">
                 <tr>
                     <th>Id</th>

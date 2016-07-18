@@ -30,61 +30,59 @@
                         </div>
                         <div class="panel-body privatetable">
                             <div class="container">
-                                <div class="col-xs-3">
-                                    <form role="form" method="POST" action="/site/filter" class="btn">
-                                        <select class="filter" id="filter1" name="brand">
-                                            <option selected value="">Brand</option>
-                                            <c:forEach items="${FilterBrands}" var="brand">
-                                                <option value="<c:out value="${brand}"/>"><c:out
-                                                        value="${brand}"/></option>
-                                            </c:forEach>
-                                        </select>
-                                        <select class="filter" id="filter2" name="col">
-                                            <option selected value="">Collection</option>
-                                            <c:forEach items="${FilterCollections}" var="collection">
-                                                <option value="<c:out value="${collection}"/>"><c:out
-                                                        value="${collection}"/></option>
-                                            </c:forEach>
-                                        </select>
-                                        <select class="filter" id="filter3" name="price">
-                                            <option selected value="">Price</option>
-                                            <option value="1">До 500</option>
-                                            <option value="2">от 500 до 1500</option>
-                                            <option value="3">от 1500</option>
-                                        </select>
-                                        <select class="filter" id="filter4" name="weight">
-                                            <option selected value="">Weight</option>
-                                            <option value="1">до 5</option>
-                                            <option value="2">от 5 до 10</option>
-                                            <option value="3">от 10 до 15</option>
-                                            <option value="4">от 15</option>
-                                        </select>
-                                        <select class="filter" id="filter5" name="length">
-                                            <option selected value="">Length</option>
-                                            <option value="1">До 20</option>
-                                            <option value="2">от 20 до 30</option>
-                                            <option value="3">от 30 до 40</option>
-                                            <option value="4">более 40</option>
-                                        </select>
-                                        <select class="filter" id="filter6" name="width">
-                                            <option selected value="">Width</option>
-                                            <option value="1">до 10</option>
-                                            <option value="2">от 10 до 20</option>
-                                            <option value="3">от 20 до 30</option>
-                                            <option value="4">от 30</option>
-                                        </select>
-                                        <select class="filter" id="filter7" name="color">
-                                            <option selected value="">Color</option>
-                                            <c:forEach items="${FilterColors}" var="color">
-                                                <option value="<c:out value="${color}"/>"><c:out
-                                                        value="${color}"/></option>
-                                            </c:forEach>
-                                        </select>
-                                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                                        <input type="submit" value="Select" class="btn btn-primary">
-                                        <input type="hidden" name="Brands" value="">
-                                    </form>
-                                </div>
+                                <form id="filter" role="form" method="POST" action="/site/filter" class="btn">
+                                    <select class="filter" id="filter1" name="brand">
+                                        <option selected value="">Brand</option>
+                                        <c:forEach items="${FilterBrands}" var="brand">
+                                            <option value="<c:out value="${brand}"/>"><c:out
+                                                    value="${brand}"/></option>
+                                        </c:forEach>
+                                    </select>
+                                    <select class="filter" id="filter2" name="col">
+                                        <option selected value="">Collection</option>
+                                        <c:forEach items="${FilterCollections}" var="collection">
+                                            <option value="<c:out value="${collection}"/>"><c:out
+                                                    value="${collection}"/></option>
+                                        </c:forEach>
+                                    </select>
+                                    <select class="filter" id="filter3" name="price">
+                                        <option selected value="">Price</option>
+                                        <option value="1">До 500</option>
+                                        <option value="2">от 500 до 1500</option>
+                                        <option value="3">от 1500</option>
+                                    </select>
+                                    <select class="filter" id="filter4" name="weight">
+                                        <option selected value="">Weight</option>
+                                        <option value="1">до 5</option>
+                                        <option value="2">от 5 до 10</option>
+                                        <option value="3">от 10 до 15</option>
+                                        <option value="4">от 15</option>
+                                    </select>
+                                    <select class="filter" id="filter5" name="length">
+                                        <option selected value="">Length</option>
+                                        <option value="1">До 20</option>
+                                        <option value="2">от 20 до 30</option>
+                                        <option value="3">от 30 до 40</option>
+                                        <option value="4">более 40</option>
+                                    </select>
+                                    <select class="filter" id="filter6" name="width">
+                                        <option selected value="">Width</option>
+                                        <option value="1">до 10</option>
+                                        <option value="2">от 10 до 20</option>
+                                        <option value="3">от 20 до 30</option>
+                                        <option value="4">от 30</option>
+                                    </select>
+                                    <select class="filter" id="filter7" name="color">
+                                        <option selected value="">Color</option>
+                                        <c:forEach items="${FilterColors}" var="color">
+                                            <option value="<c:out value="${color}"/>"><c:out
+                                                    value="${color}"/></option>
+                                        </c:forEach>
+                                    </select>
+                                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                                    <input type="submit" value="Select" class="btn btn-primary">
+                                    <input type="hidden" name="Brands" value="">
+                                </form>
                             </div>
                         </div>
                     </div>

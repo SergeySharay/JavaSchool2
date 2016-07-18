@@ -10,4 +10,6 @@
         <i class="fa fa-truck fa-fw" aria-hidden="true"></i>&nbsp; Delivery</a>
     <a class="list-group-item" href="/site/pay">
         <i class="fa fa-rub fa-fw" aria-hidden="true"></i>&nbsp; Payment</a>
+    <a class="list-group-item" href="/site/bucket">
+        <i class="fa fa-shopping-cart fa-fw" aria-hidden="true"></i>&nbsp; Cart</a>
 </div>

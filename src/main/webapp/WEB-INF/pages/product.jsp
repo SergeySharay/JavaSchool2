@@ -80,12 +80,12 @@
     </div>
     <div class="col-xs-12 col-sm-6 col-md-6">
         <div class="panel panel-default">
-            <div class="panel-heading"><p>Картинка</p></div>
+            <div class="panel-heading"><p>Picture</p></div>
             <div class="panel-body privatetable">
-                <p align="center"><img
-                        src="resources/img/pic/<c:if test="${Product.picture==null}"><c:out value="${Product.id}"/></c:if><c:if test="${Product.picture!=null}"><c:out value="${Product.picture}"/></c:if>.jpg"
-                        alt="">
-                </p>
+                <p align="center"><img class="productimg" src="resources/img/pic/<c:if test="${Product.picture==null}">
+                        <c:out value="${Product.id}"/></c:if><c:if test="${Product.picture!=null}">
+                        <c:out value="${Product.picture}"/></c:if>.jpg"
+                                       alt=""></p>
 
                 <form role="form" method="GET" action="/site/addProduct">
                     <p align="center">

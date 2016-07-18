@@ -2,6 +2,7 @@ package javaschool.service;
 
 import javaschool.dao.GenericDao;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -16,6 +17,7 @@ public class GenericServiceImpl<T, PK extends Serializable> implements GenericSe
 
     private GenericDao<T, PK> genericDao;
 
+    @Autowired
     @Qualifier(value = "GenericDao")
     public void setGenericDao(GenericDao<T, PK> genericDao) {
         this.genericDao = genericDao;
